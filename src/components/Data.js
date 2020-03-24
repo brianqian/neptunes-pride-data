@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useTable, useSortBy } from 'react-table';
+import colorMap from '../data/colorMap';
 
 const Container = styled.div`
   padding: 1rem;
@@ -16,17 +17,6 @@ const Container = styled.div`
         }
       }
     }
-    tbody {
-      tr {
-        :nth-child(odd) {
-          background-color: hsl(0, 0%, 70%);
-        }
-        transition: 0.25s ease-in;
-        :hover {
-          /* font-size: 1.2em; */
-        }
-      }
-    }
 
     th,
     td {
@@ -38,6 +28,23 @@ const Container = styled.div`
         border-right: 0;
       }
     }
+  }
+`;
+
+const TableRow = styled.tr`
+  /* :nth-child(odd) {
+    background-color: lightgray;
+  } */
+
+  background-color: ${(p) => p.theme.changeOpacity(p.color, 80)};
+  color: white;
+  :after {
+    /* content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: red; */
   }
 `;
 
@@ -75,12 +82,16 @@ const Table = ({ columns, data }) => {
         <tbody {...getTableBodyProps()}>
           {rows.map((row, i) => {
             prepareRow(row);
+            const username = row.cells[0].value;
+            {
+              /* console.log(colorMap[username]); */
+            }
             return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
+              <TableRow {...row.getRowProps()} color={colorMap[username]}>
+                {row.cells.map((cell, i) => {
                   return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
                 })}
-              </tr>
+              </TableRow>
             );
           })}
         </tbody>
