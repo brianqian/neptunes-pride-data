@@ -10,6 +10,8 @@ body, html{
   margin: 0;
   font-family: ${(props) => props.theme.textFont};
   max-width: 100vw;
+  background-color: #efefef;
+  font-size: 18px;
 }
 *{
   box-sizing: border-box;
@@ -36,7 +38,7 @@ export default class MyApp extends App {
           <Head>
             <link
               rel="stylesheet"
-              href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900&display=swap"
+              href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900|Roboto&display=swap"
             />
           </Head>
           <GlobalStyle />

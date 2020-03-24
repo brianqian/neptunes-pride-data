@@ -19,7 +19,11 @@ const Container = styled.div`
     tbody {
       tr {
         :nth-child(odd) {
-          background-color: #eaeaea;
+          background-color: hsl(0, 0%, 70%);
+        }
+        transition: 0.25s ease-in;
+        :hover {
+          /* font-size: 1.2em; */
         }
       }
     }
