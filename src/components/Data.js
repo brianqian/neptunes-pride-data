@@ -104,11 +104,12 @@ const Table = ({ columns, data, settings }) => {
 
 function Data({ data, settings }) {
   const formattedData = Object.keys(data).reduce((a, user) => {
-    a.push(data[user]);
+    const player = data[user];
+    const shipsPer12 = (player.total_industry * (player.tech.manufacturing.level + 5)) / 2;
+    player.shipsPer12 = shipsPer12;
+    a.push(player);
     return a;
   }, []);
-
-  console.log(formattedData);
 
   const columns = React.useMemo(() => [
     {
@@ -130,6 +131,7 @@ function Data({ data, settings }) {
           Header: 'Total Ships',
           accessor: 'total_strength',
         },
+        { Header: 'Ships/12 hrs', accessor: 'shipsPer12' },
         {
           Header: 'Economy',
           accessor: 'total_economy',
