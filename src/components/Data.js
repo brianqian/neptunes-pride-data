@@ -32,20 +32,16 @@ const Container = styled.div`
 `;
 
 const TableRow = styled.tr`
-  /* :nth-child(odd) {
-    background-color: lightgray;
-  } */
-
-  background-color: ${(p) => p.theme.changeOpacity(p.color, 80)};
-  color: white;
-  :after {
-    /* content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    background-color: red; */
-  }
+  ${(p) => {
+    if (p.colorSetting === 'color') {
+      return 'background-color: ' + p.theme.changeOpacity(p.color, p.opacity ?? 100) + ';';
+    }
+    if (p.colorSetting === 'alternate') {
+      return ':nth-child(odd){background-color: gray;}';
+    }
+  }}
+  color: ${(p) => p.fontColor || 'blue'};
+  /* color: blue; */
 `;
 
 const UserContainer = styled.div`
@@ -53,7 +49,7 @@ const UserContainer = styled.div`
   flex-direction: column;
 `;
 
-const Table = ({ columns, data }) => {
+const Table = ({ columns, data, settings }) => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable(
     {
       columns,
@@ -87,7 +83,13 @@ const Table = ({ columns, data }) => {
               /* console.log(colorMap[username]); */
             }
             return (
-              <TableRow {...row.getRowProps()} color={colorMap[username]}>
+              <TableRow
+                {...row.getRowProps()}
+                color={colorMap[username]}
+                colorSetting={settings.color}
+                opacity={settings.opacity}
+                fontColor={settings.fontColor}
+              >
                 {row.cells.map((cell, i) => {
                   return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
                 })}
@@ -100,7 +102,7 @@ const Table = ({ columns, data }) => {
   );
 };
 
-function Data({ data }) {
+function Data({ data, settings }) {
   const formattedData = Object.keys(data).reduce((a, user) => {
     a.push(data[user]);
     return a;
@@ -183,7 +185,7 @@ function Data({ data }) {
 
   return (
     <Container>
-      <Table columns={columns} data={memoData} />
+      <Table columns={columns} data={memoData} settings={settings} />
     </Container>
   );
 }
