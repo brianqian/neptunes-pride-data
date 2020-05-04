@@ -1,12 +1,12 @@
 const map = {
-  Oysterditch: '#ffc000',
-  Caiyo: '#6000c0',
-  Pumpernickel: '#c000c0',
-  'Elon Musk': '#c00000',
+  'Insectorg commander': '#ffc000',
+  Magnifico: '#6000c0',
+  'Monsanto Corp': '#c000c0',
+  Rottingmanta: '#c00000',
   rick: '#40c000',
-  Dadddy: '#009fdf',
-  miscellaneous1: '#0000ff',
-  'Intergalactic Ape': '#df5f00',
+  Yolo: '#009fdf',
+  'Tom Bombadil': '#0000ff',
+  AGARTHA: '#df5f00',
 };
 
 export default map;
