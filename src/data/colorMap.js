@@ -1,12 +1,12 @@
 const map = {
-  'Insectorg commander': '#ffc000',
-  Magnifico: '#6000c0',
-  'Monsanto Corp': '#c000c0',
-  Rottingmanta: '#c00000',
-  rick: '#40c000',
-  Yolo: '#009fdf',
-  'Tom Bombadil': '#0000ff',
-  AGARTHA: '#df5f00',
+  IAMTHESENATE: '#0000ff',
+  'Space Dinos': '#ffc000',
+  Fremulon: '#6000c0',
+  'Slug Boiz': '#c000c0',
+  Pyongyang: '#c00000',
+  Magnifico: '#40c000',
+  opa: '#009fdf',
+  'Space Ed': '#df5f00',
 };
 
 export default map;
